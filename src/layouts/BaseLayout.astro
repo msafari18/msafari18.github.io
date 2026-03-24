@@ -40,23 +40,19 @@ const pageTitle = title ? `${title} | Abdulrahman Diaa` : "Abdulrahman Diaa";
     <title>{pageTitle}</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpeg" />
 
-    <!-- Font preconnects -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Preload critical image -->
-    <link rel="preload" href="/images/bio-photo.jpeg" as="image" />
 
     <SEOHead title={title} description={description} canonicalPath={canonicalPath} />
     <ViewTransitions />
   </head>
   <body class="min-h-screen flex flex-col">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:rounded-lg focus:bg-[var(--color-accent)] focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white"
+    >
+      Skip to content
+    </a>
     <Header />
-    <main class="flex-1" transition:animate="fade">
+    <main id="main-content" class="flex-1" transition:animate="fade">
       <slot />
     </main>
     <Footer />
