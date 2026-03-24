@@ -1,5 +1,6 @@
 ---
 import PublicationCard from "./PublicationCard.astro";
+import { siteConfig } from "../data/site";
 
 interface Author {
   name: string;
@@ -30,6 +31,9 @@ interface Props {
 }
 
 const { title, id, publications } = Astro.props;
+
+const topics = [...new Set(publications.map((p) => p.topic).filter(Boolean))] as string[];
+const hasTopics = topics.length > 1;
 ---
 
 <section id={id} class="scroll-mt-20">
@@ -41,11 +45,105 @@ const { title, id, publications } = Astro.props;
     ></span>
     {title}
   </h2>
-  <div class="flex flex-col gap-4">
+
+  {hasTopics && (
+    <div class="topic-filters mb-5 flex flex-wrap gap-2 animate-on-scroll" role="toolbar" aria-label="Filter by topic">
+      <button
+        class="topic-filter-btn active inline-flex items-center rounded-full px-3 py-1 text-xs font-medium border transition-colors cursor-pointer border-[var(--color-accent)] bg-[var(--color-accent)]/15 text-[var(--color-accent)]"
+        data-topic="all"
+      >
+        All
+      </button>
+      {topics.map((topic) => {
+        const color = siteConfig.topics[topic as keyof typeof siteConfig.topics]?.color;
+        return (
+          <button
+            class="topic-filter-btn inline-flex items-center rounded-full px-3 py-1 text-xs font-medium border transition-colors cursor-pointer border-[var(--color-border)] text-[var(--color-text-secondary)]"
+            data-topic={topic}
+            data-color={color}
+          >
+            {color && (
+              <span
+                class="w-2 h-2 rounded-full mr-1.5 inline-block"
+                style={`background-color: ${color};`}
+              />
+            )}
+            {topic}
+          </button>
+        );
+      })}
+    </div>
+  )}
+
+  <div class="publication-list flex flex-col gap-4">
     {publications.map((pub, i) => (
-      <div class="animate-on-scroll" style={`transition-delay: ${i * 0.05}s`}>
-        <PublicationCard publication={pub} />
+      <div
+        class="publication-item animate-on-scroll"
+        style={`transition-delay: ${i * 0.05}s`}
+        data-topic={pub.topic || ""}
+      >
+        <PublicationCard publication={pub} index={i} />
       </div>
     ))}
   </div>
 </section>
+
+<script>
+  function initTopicFilters() {
+    document.querySelectorAll(".topic-filters").forEach((toolbar) => {
+      const section = toolbar.closest("section");
+      if (!section) return;
+
+      const buttons = toolbar.querySelectorAll<HTMLButtonElement>(".topic-filter-btn");
+      const items = section.querySelectorAll<HTMLElement>(".publication-item");
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const topic = btn.dataset.topic;
+
+          // Update active state
+          buttons.forEach((b) => {
+            const isActive = b === btn;
+            b.classList.toggle("active", isActive);
+
+            if (isActive) {
+              const color = b.dataset.color;
+              if (color) {
+                b.style.borderColor = color;
+                b.style.backgroundColor = `color-mix(in srgb, ${color} 15%, transparent)`;
+                b.style.color = color;
+              } else {
+                b.style.borderColor = "";
+                b.style.backgroundColor = "";
+                b.style.color = "";
+                b.classList.add(
+                  "border-[var(--color-accent)]",
+                  "bg-[var(--color-accent)]/15",
+                  "text-[var(--color-accent)]",
+                );
+              }
+            } else {
+              b.style.borderColor = "";
+              b.style.backgroundColor = "";
+              b.style.color = "";
+              b.classList.remove(
+                "border-[var(--color-accent)]",
+                "bg-[var(--color-accent)]/15",
+                "text-[var(--color-accent)]",
+              );
+            }
+          });
+
+          // Filter items
+          items.forEach((item) => {
+            const match = topic === "all" || item.dataset.topic === topic;
+            item.style.display = match ? "" : "none";
+          });
+        });
+      });
+    });
+  }
+
+  initTopicFilters();
+  document.addEventListener("astro:after-swap", initTopicFilters);
+</script>
