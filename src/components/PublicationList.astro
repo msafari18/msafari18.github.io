@@ -1,0 +1,46 @@
+---
+import PublicationCard from "./PublicationCard.astro";
+
+interface Author {
+  name: string;
+  highlight: boolean;
+}
+
+interface Link {
+  type: string;
+  url: string;
+  label: string;
+}
+
+interface Publication {
+  authors: Author[];
+  title: string;
+  venue?: string;
+  year: number;
+  abstract?: string;
+  links?: Link[];
+  highlights?: string[];
+}
+
+interface Props {
+  title: string;
+  id: string;
+  publications: Publication[];
+}
+
+const { title, id, publications } = Astro.props;
+---
+
+<section id={id} class="scroll-mt-20">
+  <h2
+    class="mb-6 text-2xl font-bold text-[var(--color-text)] flex items-center gap-3"
+  >
+    <span
+      class="h-px flex-1 max-w-8 bg-[var(--color-accent)]"
+    ></span>
+    {title}
+  </h2>
+  <div class="flex flex-col gap-4">
+    {publications.map((pub) => <PublicationCard publication={pub} />)}
+  </div>
+</section>

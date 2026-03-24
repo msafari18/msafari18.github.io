@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import PublicationList from "../components/PublicationList.astro";
+import { readFileSync } from "fs";
+import { parse } from "yaml";
+
+const publications = parse(
+  readFileSync("src/data/publications.yml", "utf-8"),
+);
+const preprints = parse(readFileSync("src/data/preprints.yml", "utf-8"));
+---
+
+<BaseLayout>
+  <div class="mx-auto max-w-3xl space-y-16 px-6 py-16">
+    <Hero />
+    <PublicationList
+      title="Publications"
+      id="publications"
+      publications={publications}
+    />
+    <PublicationList
+      title="Preprints"
+      id="preprints"
+      publications={preprints}
+    />
+  </div>
+</BaseLayout>

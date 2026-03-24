@@ -1,8 +1,21 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
-*DS_Store
+# Astro
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Claude
 CLAUDE.md
-.bundle/

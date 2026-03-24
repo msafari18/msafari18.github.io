@@ -1,0 +1,458 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Coffee Brewing Guide"
+  description="Specialty coffee brewing guide with Hario V60 Switch recipe"
+  canonicalPath="/coffee"
+>
+  <div class="mx-auto max-w-3xl px-6 py-16">
+    <!-- Header -->
+    <div class="mb-10 text-center">
+      <span class="mb-4 inline-block text-5xl">☕</span>
+      <h1 class="text-3xl font-bold text-[var(--color-text)]">
+        Coffee Brewing Guide
+      </h1>
+    </div>
+
+    <!-- Recipe Card -->
+    <div
+      class="overflow-hidden rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]"
+    >
+      <!-- Recipe Header -->
+      <div class="border-b border-[var(--color-border)] p-6">
+        <h2 class="mb-2 text-xl font-bold text-[var(--color-text)]">
+          Hario V60 Switch Recipe
+        </h2>
+        <p class="text-sm text-[var(--color-text-secondary)]">
+          A hybrid brewing method combining the best of percolation and
+          immersion for a balanced, flavorful cup.
+        </p>
+      </div>
+
+      <!-- Metrics Grid -->
+      <div
+        class="grid grid-cols-2 gap-px border-b border-[var(--color-border)] bg-[var(--color-border)] sm:grid-cols-5"
+      >
+        <div class="flex flex-col items-center gap-1.5 bg-[var(--color-surface)] p-4">
+          <svg
+            class="w-5 h-5 text-[var(--color-accent)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
+            <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path>
+          </svg>
+          <span class="text-xs text-[var(--color-text-secondary)]">Coffee</span
+          >
+          <span class="text-sm font-semibold text-[var(--color-text)]"
+            >20g</span
+          >
+        </div>
+        <div class="flex flex-col items-center gap-1.5 bg-[var(--color-surface)] p-4">
+          <svg
+            class="w-5 h-5 text-[var(--color-accent)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+          </svg>
+          <span class="text-xs text-[var(--color-text-secondary)]">Water</span>
+          <span class="text-sm font-semibold text-[var(--color-text)]"
+            >320g</span
+          >
+          <span class="text-[10px] text-[var(--color-text-secondary)]"
+            >(1:16 ratio)</span
+          >
+        </div>
+        <div class="flex flex-col items-center gap-1.5 bg-[var(--color-surface)] p-4">
+          <svg
+            class="w-5 h-5 text-[var(--color-accent)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="3"></circle>
+            <path
+              d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+            ></path>
+          </svg>
+          <span class="text-xs text-[var(--color-text-secondary)]"
+            >Grind Size</span
+          >
+          <span class="text-sm font-semibold text-[var(--color-text)]"
+            >Medium</span
+          >
+          <span class="text-[10px] text-[var(--color-text-secondary)]"
+            >(K6: 90 clicks)</span
+          >
+        </div>
+        <div class="flex flex-col items-center gap-1.5 bg-[var(--color-surface)] p-4">
+          <svg
+            class="w-5 h-5 text-[var(--color-accent)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"></path>
+          </svg>
+          <span class="text-xs text-[var(--color-text-secondary)]">Temp</span>
+          <span class="text-sm font-semibold text-[var(--color-text)]"
+            >93°C</span
+          >
+        </div>
+        <div
+          class="col-span-2 flex flex-col items-center gap-1.5 bg-[var(--color-surface)] p-4 sm:col-span-1"
+        >
+          <svg
+            class="w-5 h-5 text-[var(--color-accent)]"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span class="text-xs text-[var(--color-text-secondary)]"
+            >Brew Time</span
+          >
+          <span class="text-sm font-semibold text-[var(--color-text)]"
+            >4:00</span
+          >
+        </div>
+      </div>
+
+      <!-- Brewing Timeline -->
+      <div class="border-b border-[var(--color-border)] p-6">
+        <h3 class="mb-4 text-sm font-semibold uppercase tracking-wider text-[var(--color-text-secondary)]">
+          Brewing Timeline
+        </h3>
+        <div class="relative">
+          <!-- Time markers -->
+          <div class="mb-2 flex justify-between text-xs text-[var(--color-text-secondary)]">
+            <span>0:00</span>
+            <span>1:00</span>
+            <span>2:00</span>
+            <span>3:00</span>
+            <span>4:00</span>
+          </div>
+          <!-- Phase bars -->
+          <div class="flex h-10 overflow-hidden rounded-lg">
+            <div
+              class="flex w-1/4 items-center justify-center gap-1.5 bg-emerald-500/20 text-xs font-medium text-emerald-400"
+            >
+              <span>🌱</span>
+              <span class="hidden sm:inline">Bloom</span>
+            </div>
+            <div
+              class="flex w-1/4 items-center justify-center gap-1.5 bg-blue-500/20 text-xs font-medium text-blue-400"
+            >
+              <span>💧</span>
+              <span class="hidden sm:inline">Percolation</span>
+            </div>
+            <div
+              class="flex w-1/4 items-center justify-center gap-1.5 bg-purple-500/20 text-xs font-medium text-purple-400"
+            >
+              <span>🔄</span>
+              <span class="hidden sm:inline">Immersion</span>
+            </div>
+            <div
+              class="flex w-1/4 items-center justify-center gap-1.5 bg-amber-500/20 text-xs font-medium text-amber-400"
+            >
+              <span>⏬</span>
+              <span class="hidden sm:inline">Drain</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preparation Steps -->
+      <div class="border-b border-[var(--color-border)] p-6">
+        <h3 class="mb-4 text-sm font-semibold uppercase tracking-wider text-[var(--color-text-secondary)]">
+          Preparation
+        </h3>
+        <div class="space-y-3">
+          <div class="flex gap-3">
+            <span
+              class="mt-0.5 flex h-6 shrink-0 items-center rounded bg-[var(--color-text-secondary)]/10 px-2 text-[10px] font-medium text-[var(--color-text-secondary)]"
+              >Prep</span
+            >
+            <div>
+              <p class="text-sm font-medium text-[var(--color-text)]">
+                Preheat the dripper
+              </p>
+              <p class="text-sm text-[var(--color-text-secondary)]">
+                With the switch closed, fill the dripper with hot water and let
+                it sit for a minute. Drain the water before adding the filter.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <span
+              class="mt-0.5 flex h-6 shrink-0 items-center rounded bg-[var(--color-text-secondary)]/10 px-2 text-[10px] font-medium text-[var(--color-text-secondary)]"
+              >Prep</span
+            >
+            <div>
+              <p class="text-sm font-medium text-[var(--color-text)]">
+                Pre-wet the filter
+              </p>
+              <p class="text-sm text-[var(--color-text-secondary)]">
+                Rinse the filter with hot water to remove any paper taste and
+                preheat the dripper.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <span
+              class="mt-0.5 flex h-6 shrink-0 items-center rounded bg-[var(--color-text-secondary)]/10 px-2 text-[10px] font-medium text-[var(--color-text-secondary)]"
+              >Prep</span
+            >
+            <div>
+              <p class="text-sm font-medium text-[var(--color-text)]">
+                Add coffee
+              </p>
+              <p class="text-sm text-[var(--color-text-secondary)]">
+                Add the ground coffee to the filter and shake gently to level
+                the bed.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brewing Steps -->
+      <div class="border-b border-[var(--color-border)] p-6">
+        <h3 class="mb-4 text-sm font-semibold uppercase tracking-wider text-[var(--color-text-secondary)]">
+          Brewing Steps
+        </h3>
+        <div class="space-y-4">
+          <!-- Bloom -->
+          <div class="flex gap-3">
+            <span
+              class="mt-0.5 flex h-6 shrink-0 items-center rounded bg-emerald-500/20 px-2 text-[10px] font-semibold text-emerald-400"
+              >0:00</span
+            >
+            <div class="flex-1">
+              <p class="text-sm font-medium text-[var(--color-text)]">Bloom</p>
+              <p class="mb-2 text-sm text-[var(--color-text-secondary)]">
+                Pour 60g of water slowly over the coffee grounds in a spiral
+                motion. Aim for a 30-second pour; then wait for 30 seconds to
+                let the coffee bloom.
+              </p>
+              <div class="flex h-6 overflow-hidden rounded text-[10px] font-medium">
+                <div
+                  class="flex w-1/2 items-center justify-center bg-emerald-500/20 text-emerald-400"
+                >
+                  Pour (30s)
+                </div>
+                <div
+                  class="flex w-1/2 items-center justify-center bg-[var(--color-surface-hover)] text-[var(--color-text-secondary)]"
+                >
+                  Wait (30s)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Percolation -->
+          <div class="flex gap-3">
+            <span
+              class="mt-0.5 flex h-6 shrink-0 items-center rounded bg-blue-500/20 px-2 text-[10px] font-semibold text-blue-400"
+              >1:00</span
+            >
+            <div class="flex-1">
+              <p class="text-sm font-medium text-[var(--color-text)]">
+                Percolation
+              </p>
+              <p class="mb-2 text-sm text-[var(--color-text-secondary)]">
+                At 1:00, pour 100g of water in a spiral motion, aiming for a
+                40-second pour. This can be a bit faster if you want to increase
+                the agitation. Selectively pour on darker, drier spots to ensure
+                even saturation.
+              </p>
+              <div class="flex h-6 overflow-hidden rounded text-[10px] font-medium">
+                <div
+                  class="flex items-center justify-center bg-blue-500/20 text-blue-400"
+                  style="width: 66.67%"
+                >
+                  Pour (40s)
+                </div>
+                <div
+                  class="flex items-center justify-center bg-[var(--color-surface-hover)] text-[var(--color-text-secondary)]"
+                  style="width: 33.33%"
+                >
+                  Wait (20s)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Close switch -->
+          <div class="flex gap-3">
+            <span
+              class="mt-0.5 flex h-6 shrink-0 items-center rounded bg-purple-500/20 px-2 text-[10px] font-semibold text-purple-400"
+              >2:00</span
+            >
+            <div>
+              <p class="text-sm font-medium text-[var(--color-text)]">
+                Close the switch
+              </p>
+              <p class="text-sm text-[var(--color-text-secondary)]">
+                At 2:00, close the switch to start the immersion phase.
+              </p>
+            </div>
+          </div>
+
+          <!-- Immersion -->
+          <div class="flex gap-3">
+            <span
+              class="mt-0.5 flex h-6 shrink-0 items-center rounded bg-purple-500/20 px-2 text-[10px] font-semibold text-purple-400"
+              >2:00</span
+            >
+            <div class="flex-1">
+              <p class="text-sm font-medium text-[var(--color-text)]">
+                Immersion
+              </p>
+              <p class="mb-2 text-sm text-[var(--color-text-secondary)]">
+                Add the remaining water (160g) and let it steep until 3:00. Open
+                the switch to drain the coffee. The coffee should finish
+                draining before 4:00.
+              </p>
+              <div class="flex h-6 overflow-hidden rounded text-[10px] font-medium">
+                <div
+                  class="flex w-1/2 items-center justify-center bg-purple-500/20 text-purple-400"
+                >
+                  Steep (60s)
+                </div>
+                <div
+                  class="flex w-1/2 items-center justify-center bg-amber-500/20 text-amber-400"
+                >
+                  Drain (60s)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Serve -->
+          <div class="flex gap-3">
+            <span
+              class="mt-0.5 flex h-6 shrink-0 items-center rounded bg-amber-500/20 px-2 text-[10px] font-semibold text-amber-400"
+              >4:00</span
+            >
+            <div>
+              <p class="text-sm font-medium text-[var(--color-text)]">Serve</p>
+              <p class="text-sm text-[var(--color-text-secondary)]">
+                Swirl, smell, slurp, and enjoy your coffee!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tweakables -->
+      <div class="border-b border-[var(--color-border)] p-6">
+        <h3 class="mb-4 text-sm font-semibold uppercase tracking-wider text-[var(--color-text-secondary)]">
+          Tweakables
+        </h3>
+        <p class="mb-4 text-sm text-[var(--color-text-secondary)]">
+          Adjust these parameters to fine-tune your brew.
+        </p>
+        <div class="space-y-3">
+          {
+            [
+              {
+                icon: "💪",
+                goal: "For heavier body:",
+                action:
+                  "bloom with a closed switch, or increase steep time or both",
+              },
+              {
+                icon: "🧪",
+                goal: "For fermented beans:",
+                action: "do not close the switch",
+              },
+              {
+                icon: "✨",
+                goal: "For more acidity:",
+                action: "increase volume/agitation of percolation pour",
+              },
+              {
+                icon: "🔥",
+                goal: "For developed/omni roasts:",
+                action:
+                  "lower temp in bloom or in immersion and see the effect for your coffee",
+              },
+              {
+                icon: "🍯",
+                goal: "For more sweetness:",
+                action: "less volume/agitation of percolation pour",
+              },
+              {
+                icon: "🪨",
+                goal: "For tough beans:",
+                action:
+                  "make it only 1 long percolation pour (cancel immersion)",
+              },
+            ].map((item) => (
+              <div class="flex items-start gap-3">
+                <span class="mt-0.5 text-lg">{item.icon}</span>
+                <p class="text-sm text-[var(--color-text-secondary)]">
+                  <span class="font-medium text-[var(--color-text)]">
+                    {item.goal}
+                  </span>{" "}
+                  {item.action}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="flex items-center justify-between p-6">
+        <p class="text-sm italic text-[var(--color-text-secondary)]">
+          "Coffee is a language in itself." — Jackie Chan
+        </p>
+        <button
+          onclick="window.print()"
+          class="flex h-9 w-9 items-center justify-center rounded-full text-[var(--color-text-secondary)] hover:bg-[var(--color-surface-hover)] hover:text-[var(--color-accent)] transition-colors cursor-pointer"
+          aria-label="Print this recipe"
+        >
+          <svg
+            class="w-5 h-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path
+              d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"
+            ></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

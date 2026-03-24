@@ -1,0 +1,74 @@
+---
+import { siteConfig } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+}
+
+const { title, description, canonicalPath = "" } = Astro.props;
+
+const pageTitle = title
+  ? `${title} | ${siteConfig.title}`
+  : siteConfig.title;
+const pageDescription = description || siteConfig.description;
+const canonicalUrl = `${siteConfig.url}${canonicalPath}`;
+const ogImage = `${siteConfig.url}${siteConfig.image}`;
+---
+
+<!-- Primary Meta Tags -->
+<meta name="description" content={pageDescription} />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={pageDescription} />
+<meta property="og:image" content={ogImage} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content={canonicalUrl} />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={pageDescription} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- JSON-LD Structured Data -->
+{
+  !title && (
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: siteConfig.author.name,
+        url: siteConfig.url,
+        image: ogImage,
+        jobTitle: siteConfig.author.jobTitle,
+        worksFor: {
+          "@type": "Organization",
+          name: siteConfig.author.organization.name,
+          url: siteConfig.author.organization.url,
+        },
+        alumniOf: siteConfig.author.alumniOf.map((a) => ({
+          "@type": "Organization",
+          name: a.name,
+          url: a.url,
+        })),
+        memberOf: {
+          "@type": "Organization",
+          name: siteConfig.author.lab.name,
+          url: siteConfig.author.lab.url,
+        },
+        sameAs: [
+          siteConfig.social.github,
+          siteConfig.social.linkedin,
+          siteConfig.social.scholar,
+        ],
+        knowsAbout: siteConfig.knowsAbout,
+      })}
+    />
+  )
+}

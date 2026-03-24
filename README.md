@@ -1,55 +1,41 @@
-# Website Maintenance Guide
+# abdulrahmandiaa.ca
 
-This guide explains how to maintain and update the content on your academic website.
+Academic portfolio site built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/) v4.
 
-## Adding New Publications or Preprints
+## Development
 
-The website now uses a data-driven approach for publications and preprints, making it much easier to add new entries without editing HTML directly.
+```bash
+npm install        # Install dependencies
+npm run dev        # Start dev server at http://localhost:4321
+npm run build      # Build for production (output: dist/)
+npm run preview    # Preview production build
+```
 
-### To add a new publication:
+## Adding Publications
 
-1. Open the `_data/publications.yml` file
-2. Add a new entry following this format:
+Edit `src/data/publications.yml` (or `preprints.yml`):
 
 ```yaml
 - authors:
     - name: "A. Author"
       highlight: false
-    - name: "B. Author"
-      highlight: true  # Set to true for your name
-    - name: "C. Author"
-      highlight: false
-  title: "Your Paper Title"
-  venue: "Conference or Journal Name"  # Only for publications
-  year: 2024
+    - name: "Your Name"
+      highlight: true
+  title: "Paper Title"
+  venue: "Conference or Journal"
+  year: 2025
+  abstract: "Optional abstract text..."
   links:
     - type: "paper"
-      url: "https://link-to-paper.com"
+      url: "https://arxiv.org/abs/..."
       label: "Paper"
     - type: "code"
-      url: "https://github.com/username/repo"
+      url: "https://github.com/..."
       label: "Code"
-    # Add more links as needed (e.g., slides, video, etc.)
+  highlights:
+    - "Best Paper Award"
 ```
 
-### To add a new preprint:
+## Deployment
 
-1. Open the `_data/preprints.yml` file
-2. Add a new entry following the same format as publications (omit the venue field if not applicable)
-
-## Website Structure
-
-- `_data/`: Contains YAML files with structured data
-  - `publications.yml`: Published papers
-  - `preprints.yml`: Preprint papers
-- `_includes/`: Contains reusable HTML templates
-  - `publication-entry.html`: Template for rendering publications
-- `assets/`: Contains static files (CSS, JavaScript, images, etc.)
-  - `js/section-toggle.js`: Controls the expandable sections
-
-## Tips
-
-- Always set `highlight: true` for your name in the authors list
-- Keep the YAML indentation consistent (use spaces, not tabs)
-- For mathematical notation in titles, use LaTeX syntax with dollar signs (e.g., `$k$-Means`)
-- The website will automatically format the entries consistently
+Pushes to `main` trigger automatic deployment to GitHub Pages via GitHub Actions.

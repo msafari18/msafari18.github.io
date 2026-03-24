@@ -1,0 +1,44 @@
+---
+---
+
+<button
+  id="scroll-to-top"
+  class="fixed bottom-6 right-6 z-40 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-accent)] text-white opacity-0 shadow-lg transition-all duration-300 hover:bg-[var(--color-accent-hover)] hover:scale-110 cursor-pointer pointer-events-none"
+  aria-label="Scroll to top"
+>
+  <svg
+    class="w-5 h-5"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
+
+<script>
+  function initScrollToTop() {
+    const btn = document.getElementById("scroll-to-top");
+    if (!btn) return;
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        btn.style.opacity = "1";
+        btn.style.pointerEvents = "auto";
+      } else {
+        btn.style.opacity = "0";
+        btn.style.pointerEvents = "none";
+      }
+    });
+
+    btn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  initScrollToTop();
+  document.addEventListener("astro:after-swap", initScrollToTop);
+</script>

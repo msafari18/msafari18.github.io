@@ -1,0 +1,299 @@
+---
+interface Author {
+  name: string;
+  highlight: boolean;
+}
+
+interface Link {
+  type: string;
+  url: string;
+  label: string;
+}
+
+interface Props {
+  publication: {
+    authors: Author[];
+    title: string;
+    venue?: string;
+    year: number;
+    abstract?: string;
+    links?: Link[];
+    highlights?: string[];
+  };
+}
+
+const { publication } = Astro.props;
+const paperLink = publication.links?.find((l) => l.type === "paper");
+const codeLink = publication.links?.find((l) => l.type === "code");
+---
+
+<article
+  class="group rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition-colors duration-200 hover:border-[var(--color-accent)]/30"
+  itemscope
+  itemtype="https://schema.org/ScholarlyArticle"
+>
+  <!-- Authors -->
+  <div class="mb-1 text-sm text-[var(--color-text-secondary)]">
+    {
+      publication.authors.map((author, i) => (
+        <>
+          {author.highlight ? (
+            <span class="font-medium text-[var(--color-accent)]" itemprop="author">
+              {author.name}
+            </span>
+          ) : (
+            <span itemprop="author">{author.name}</span>
+          )}
+          {i < publication.authors.length - 1 && ", "}
+        </>
+      ))
+    }
+  </div>
+
+  <!-- Title -->
+  <h3 class="mb-1 text-base font-semibold leading-snug text-[var(--color-text)]" itemprop="name">
+    {publication.title}
+  </h3>
+
+  <!-- Venue + Year -->
+  {
+    publication.venue && (
+      <div class="mb-3 text-sm text-[var(--color-text-secondary)]">
+        <span itemprop="publisher">{publication.venue}</span>
+        {" "}
+        <span class="font-medium text-[var(--color-accent)]/70" itemprop="datePublished">
+          {publication.year}
+        </span>
+      </div>
+    )
+  }
+
+  <!-- Highlights / Awards -->
+  {
+    publication.highlights && publication.highlights.length > 0 && (
+      <div class="mb-3 flex flex-wrap gap-2">
+        {publication.highlights.map((h) => (
+          <span class="inline-flex items-center gap-1 rounded-full bg-[var(--color-highlight)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--color-highlight)]">
+            <svg
+              class="w-3 h-3"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+            {h}
+          </span>
+        ))}
+      </div>
+    )
+  }
+
+  <!-- Action buttons -->
+  <div class="flex flex-wrap items-center gap-2">
+    {
+      publication.abstract && (
+        <button
+          class="abstract-toggle inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] px-3 py-1 text-xs font-medium text-[var(--color-text-secondary)] transition-colors hover:border-[var(--color-accent)]/30 hover:text-[var(--color-accent)] cursor-pointer"
+        >
+          <svg
+            class="toggle-chevron w-3.5 h-3.5 transition-transform duration-200"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+          Abstract
+        </button>
+      )
+    }
+
+    <button
+      class="bibtex-button inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] px-3 py-1 text-xs font-medium text-[var(--color-text-secondary)] transition-colors hover:border-[var(--color-accent)]/30 hover:text-[var(--color-accent)] cursor-pointer"
+      data-authors={publication.authors.map((a) => a.name).join("|")}
+      data-title={publication.title}
+      data-venue={publication.venue || ""}
+      data-year={publication.year}
+      data-url={paperLink?.url || ""}
+    >
+      <svg
+        class="w-3.5 h-3.5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+        ></path>
+      </svg>
+      BibTeX
+    </button>
+
+    {
+      paperLink && (
+        <a
+          href={paperLink.url}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-accent)]/30 px-3 py-1 text-xs font-medium text-[var(--color-accent)] transition-colors hover:bg-[var(--color-accent)]/10"
+          itemprop="url"
+        >
+          <svg
+            class="w-3.5 h-3.5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="16" y1="13" x2="8" y2="13" />
+            <line x1="16" y1="17" x2="8" y2="17" />
+            <polyline points="10 9 9 9 8 9" />
+          </svg>
+          {paperLink.label}
+        </a>
+      )
+    }
+
+    {
+      codeLink && (
+        <a
+          href={codeLink.url}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] px-3 py-1 text-xs font-medium text-[var(--color-text-secondary)] transition-colors hover:border-[var(--color-accent)]/30 hover:text-[var(--color-accent)]"
+        >
+          <svg
+            class="w-3.5 h-3.5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="16 18 22 12 16 6" />
+            <polyline points="8 6 2 12 8 18" />
+          </svg>
+          {codeLink.label}
+        </a>
+      )
+    }
+  </div>
+
+  <!-- Collapsible Abstract -->
+  {
+    publication.abstract && (
+      <div
+        class="publication-abstract grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out"
+        itemprop="abstract"
+      >
+        <div class="overflow-hidden">
+          <p class="pt-4 text-sm leading-relaxed text-[var(--color-text-secondary)]">
+            {publication.abstract}
+          </p>
+        </div>
+      </div>
+    )
+  }
+</article>
+
+<script>
+  function initPublicationCards() {
+    // Abstract toggles
+    document.querySelectorAll(".abstract-toggle").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const card = btn.closest("article");
+        const abstract = card?.querySelector(".publication-abstract");
+        const chevron = btn.querySelector(".toggle-chevron");
+        if (!abstract) return;
+
+        const isOpen = abstract.classList.contains("grid-rows-[1fr]");
+        abstract.classList.toggle("grid-rows-[0fr]", isOpen);
+        abstract.classList.toggle("grid-rows-[1fr]", !isOpen);
+        chevron?.classList.toggle("rotate-180", !isOpen);
+      });
+    });
+
+    // BibTeX copy
+    document.querySelectorAll(".bibtex-button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const el = btn as HTMLElement;
+        const ds = el.dataset;
+        const authors = ds.authors?.split("|") || [];
+        const title = ds.title || "";
+        const venue = ds.venue || "";
+        const year = ds.year || "";
+        const url = ds.url || "";
+
+        const lastName = (authors[0] || "")
+          .split(" ")
+          .pop()
+          ?.replace(/[.,]/g, "");
+        const firstWord = title.split(" ")[0].replace(/[^a-zA-Z0-9]/g, "");
+        const key = `${lastName}${year}${firstWord}`;
+
+        let bib = `@${venue ? "article" : "unpublished"}{${key},\n`;
+        bib += `  author = {${authors.join(" and ")}},\n`;
+        bib += `  title = {${title}},\n`;
+        if (venue) bib += `  journal = {${venue}},\n`;
+        bib += `  year = {${year}},\n`;
+        if (url) bib += `  url = {${url}},\n`;
+        bib += `}`;
+
+        navigator.clipboard.writeText(bib).then(
+          () => showToast("Citation copied to clipboard!"),
+          () => showToast("Failed to copy citation", true),
+        );
+      });
+    });
+  }
+
+  function showToast(message: string, isError = false) {
+    document.querySelector(".clipboard-toast")?.remove();
+
+    const toast = document.createElement("div");
+    toast.className = "clipboard-toast";
+    Object.assign(toast.style, {
+      position: "fixed",
+      bottom: "1.5rem",
+      left: "50%",
+      transform: "translateX(-50%) translateY(10px)",
+      padding: "0.625rem 1.25rem",
+      borderRadius: "9999px",
+      fontSize: "0.875rem",
+      fontWeight: "500",
+      color: "white",
+      backgroundColor: isError ? "#ef4444" : "#22c55e",
+      opacity: "0",
+      transition: "opacity 0.3s, transform 0.3s",
+      zIndex: "9999",
+      pointerEvents: "none" as const,
+    });
+    toast.textContent = message;
+    document.body.appendChild(toast);
+
+    requestAnimationFrame(() => {
+      toast.style.opacity = "1";
+      toast.style.transform = "translateX(-50%) translateY(0)";
+    });
+
+    setTimeout(() => {
+      toast.style.opacity = "0";
+      toast.style.transform = "translateX(-50%) translateY(10px)";
+      setTimeout(() => toast.remove(), 300);
+    }, 3000);
+  }
+
+  initPublicationCards();
+  document.addEventListener("astro:after-swap", initPublicationCards);
+</script>
