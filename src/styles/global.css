@@ -96,19 +96,8 @@ button:focus-visible,
   border-radius: 2px;
 }
 
-/* Scroll-triggered entrance animations */
+/* Animations */
 @media (prefers-reduced-motion: no-preference) {
-  .animate-on-scroll {
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.15s ease-out, transform 0.15s ease-out;
-  }
-
-  .animate-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
   /* Avatar glow pulse */
   @keyframes glow-pulse {
     0%, 100% {

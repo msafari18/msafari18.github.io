@@ -37,7 +37,7 @@ const abstractId = `abstract-${index}`;
 ---
 
 <article
-  class="group rounded-lg border bg-[var(--color-surface)] p-5 transition-colors duration-200"
+  class="group rounded-lg border bg-[var(--color-surface)] p-4 transition-colors duration-200"
   style={topicColor
     ? `border-color: color-mix(in srgb, ${topicColor} 25%, var(--color-border)); border-left: 3px solid ${topicColor};`
     : `border-color: var(--color-border);`}
@@ -46,7 +46,7 @@ const abstractId = `abstract-${index}`;
 >
   <!-- Topic + Authors -->
   {publication.topic && topicColor && (
-    <div class="mb-2">
+    <div class="mb-1">
       <span
         class="inline-block rounded-full px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider"
         style={`color: ${topicColor}; background-color: color-mix(in srgb, ${topicColor} 12%, transparent);`}
@@ -82,7 +82,7 @@ const abstractId = `abstract-${index}`;
   <!-- Venue + Year -->
   {
     publication.venue && (
-      <div class="mb-3 text-sm text-[var(--color-text-secondary)]">
+      <div class="mb-2 text-sm text-[var(--color-text-secondary)]">
         <span itemprop="publisher">{publication.venue}</span>
         {" "}
         <span class="font-medium text-[var(--color-accent)]/70" itemprop="datePublished">
@@ -95,7 +95,7 @@ const abstractId = `abstract-${index}`;
   <!-- Highlights / Awards -->
   {
     publication.highlights && publication.highlights.length > 0 && (
-      <div class="mb-3 flex flex-wrap gap-2">
+      <div class="mb-2 flex flex-wrap gap-2">
         {publication.highlights.map((h) => (
           <span class="inline-flex items-center gap-1 rounded-full bg-[var(--color-highlight)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--color-highlight)]">
             <svg
