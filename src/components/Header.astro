@@ -3,15 +3,23 @@ import ThemeToggle from "./ThemeToggle.astro";
 import { siteConfig } from "../data/site";
 ---
 
+<style is:global>
+  header a,
+  header a:hover {
+    color: inherit;
+  }
+</style>
+
 <header
-  class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-lg transition-colors duration-200"
+  class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur-lg transition-colors duration-200 text-[var(--color-text)]"
 >
   <div class="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
     <!-- Site title -->
     <a
       href="/"
-      class="text-lg font-semibold text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors shrink-0"
+      class="flex items-center gap-2 text-lg font-semibold text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors shrink-0"
     >
+      <img src="/favicon.jpeg" alt="" class="h-7 w-7 rounded-full" />
       {siteConfig.title}
     </a>
 
@@ -20,31 +28,31 @@ import { siteConfig } from "../data/site";
       <a
         href="/#bio"
         data-section="bio"
-        class="nav-link hidden md:block rounded-md px-3 py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
+        class="nav-link hidden md:block rounded-md px-3 py-2 text-sm text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
         >Bio</a
       >
       <a
         href="/#publications"
         data-section="publications"
-        class="nav-link hidden md:block rounded-md px-3 py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
+        class="nav-link hidden md:block rounded-md px-3 py-2 text-sm text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
         >Publications</a
       >
       <a
         href="/#awards"
         data-section="awards"
-        class="nav-link hidden md:block rounded-md px-3 py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
+        class="nav-link hidden md:block rounded-md px-3 py-2 text-sm text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
         >Awards</a
       >
       <a
         href="/#preprints"
         data-section="preprints"
-        class="nav-link hidden md:block rounded-md px-3 py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
+        class="nav-link hidden md:block rounded-md px-3 py-2 text-sm text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
         >Preprints</a
       >
       <a
         href="/#service"
         data-section="service"
-        class="nav-link hidden md:block rounded-md px-3 py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
+        class="nav-link hidden md:block rounded-md px-3 py-2 text-sm text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
         >Service</a
       >
 
@@ -55,7 +63,7 @@ import { siteConfig } from "../data/site";
         href={siteConfig.social.github}
         target="_blank"
         rel="noopener"
-        class="flex h-9 w-9 items-center justify-center rounded-full text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
+        class="flex h-9 w-9 items-center justify-center rounded-full text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
         aria-label="GitHub"
       >
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -68,7 +76,7 @@ import { siteConfig } from "../data/site";
         href={siteConfig.social.linkedin}
         target="_blank"
         rel="noopener"
-        class="flex h-9 w-9 items-center justify-center rounded-full text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
+        class="flex h-9 w-9 items-center justify-center rounded-full text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
         aria-label="LinkedIn"
       >
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -81,7 +89,7 @@ import { siteConfig } from "../data/site";
         href={siteConfig.social.scholar}
         target="_blank"
         rel="noopener"
-        class="flex h-9 w-9 items-center justify-center rounded-full text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
+        class="flex h-9 w-9 items-center justify-center rounded-full text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
         aria-label="Google Scholar"
       >
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -92,7 +100,7 @@ import { siteConfig } from "../data/site";
       </a>
       <a
         href={`mailto:${siteConfig.email}`}
-        class="flex h-9 w-9 items-center justify-center rounded-full text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
+        class="flex h-9 w-9 items-center justify-center rounded-full text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
         aria-label="Email"
       >
         <svg
@@ -111,7 +119,7 @@ import { siteConfig } from "../data/site";
 
       <a
         href="/coffee"
-        class="flex h-9 w-9 items-center justify-center rounded-full text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
+        class="flex h-9 w-9 items-center justify-center rounded-full text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
         aria-label="Coffee"
       >
         <svg
@@ -151,9 +159,9 @@ import { siteConfig } from "../data/site";
           if (!link) return;
           if (entry.isIntersecting) {
             navLinks.forEach((l) => {
-              l.classList.remove("text-[var(--color-text)]", "border-b-2", "border-[var(--color-accent)]");
+              l.classList.remove("border-b-2", "border-[var(--color-accent)]");
             });
-            link.classList.add("text-[var(--color-text)]", "border-b-2", "border-[var(--color-accent)]");
+            link.classList.add("border-b-2", "border-[var(--color-accent)]");
           }
         });
       },

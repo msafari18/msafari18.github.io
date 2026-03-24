@@ -5,9 +5,9 @@
 
 /* Custom theme using Tailwind v4 CSS-first config */
 @theme {
-  --color-bg: #0b1215;
-  --color-surface: #131e22;
-  --color-surface-hover: #1a2a30;
+  --color-bg: #091214;
+  --color-surface: #0f1a1e;
+  --color-surface-hover: #152428;
   --color-border: rgba(255, 255, 255, 0.12);
   --color-text: #f1f5f9;
   --color-text-secondary: #b8c5d4;
