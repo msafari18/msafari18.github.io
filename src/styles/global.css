@@ -124,6 +124,10 @@ button:focus-visible,
   }
 
   .avatar-glow {
-    animation: glow-pulse 4s ease-in-out infinite;
+    animation: none;
+  }
+
+  .avatar-glow:hover {
+    animation: glow-pulse 4s ease-in-out 1;
   }
 }

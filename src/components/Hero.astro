@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import bioPhoto from "../assets/bio-photo.jpeg";
 import { siteConfig } from "../data/site";
 ---
 
@@ -87,11 +85,11 @@ import { siteConfig } from "../data/site";
         class="avatar-glow h-40 w-40 overflow-hidden rounded-full ring-2 ring-[var(--color-accent)]/30 ring-offset-2 ring-offset-[var(--color-bg)] md:h-48 md:w-48"
         style="box-shadow: 0 0 20px color-mix(in srgb, var(--color-accent) 30%, transparent), 0 0 40px color-mix(in srgb, var(--color-accent) 15%, transparent);"
       >
-        <Image
-          src={bioPhoto}
+        <img
+          src={siteConfig.image}
           alt={siteConfig.author.name}
-          widths={[160, 192, 320, 384]}
-          sizes="(min-width: 768px) 192px, 160px"
+          width="192"
+          height="192"
           class="h-full w-full object-cover"
           loading="eager"
         />
