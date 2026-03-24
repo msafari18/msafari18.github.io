@@ -1,7 +1,7 @@
 export const siteConfig = {
   title: "Abdulrahman Diaa",
   description:
-    "PhD student researching watermarking, privacy-preserving machine learning, and encrypted computation at the University of Waterloo.",
+    "PhD student researching privacy-preserving machine learning and content watermarking at the University of Waterloo.",
   url: "https://abdulrahmandiaa.ca",
   email: "a2diaa@uwaterloo.ca",
   image: "/images/bio-photo.jpeg",
@@ -34,13 +34,7 @@ export const siteConfig = {
     scholar: "https://scholar.google.com/citations?user=xFX1k1AAAAAJ",
   },
   knowsAbout: [
-    "Watermarking",
-    "AI-generated content",
-    "Digital trust",
-    "Content provenance",
-    "Privacy-preserving machine-learning",
-    "Cryptography",
-    "Differential privacy",
-    "Fully-homomorphic encryption",
+    "Privacy-Preserving Machine Learning",
+    "AI-content Watermarking",
   ],
 } as const;

@@ -50,7 +50,7 @@
     - type: "paper"
       url: "https://arxiv.org/abs/2410.02440"
       label: "Paper"
-    - type: "code"
+    - type: "models"
       url: "https://huggingface.co/collections/DDiaa/watermark-removing-paraphrasers-673e3f01fcceafaa2da7e0cf"
       label: "Models"
   highlights:

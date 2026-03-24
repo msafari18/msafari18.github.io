@@ -5,6 +5,8 @@
   id="scroll-to-top"
   class="fixed bottom-6 right-6 z-40 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-accent)] text-white opacity-0 shadow-lg transition-all duration-300 hover:bg-[var(--color-accent-hover)] hover:scale-110 cursor-pointer pointer-events-none"
   aria-label="Scroll to top"
+  aria-hidden="true"
+  tabindex="-1"
 >
   <svg
     class="w-5 h-5"
@@ -28,9 +30,13 @@
       if (window.scrollY > 300) {
         btn.style.opacity = "1";
         btn.style.pointerEvents = "auto";
+        btn.removeAttribute("aria-hidden");
+        btn.removeAttribute("tabindex");
       } else {
         btn.style.opacity = "0";
         btn.style.pointerEvents = "none";
+        btn.setAttribute("aria-hidden", "true");
+        btn.setAttribute("tabindex", "-1");
       }
     });
 

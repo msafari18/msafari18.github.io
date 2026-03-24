@@ -53,6 +53,7 @@
       const moon = toggle!.querySelector(".moon-icon") as HTMLElement;
       if (sun) sun.style.opacity = isLight ? "0" : "1";
       if (moon) moon.style.opacity = isLight ? "1" : "0";
+      toggle!.setAttribute("aria-label", isLight ? "Switch to dark mode" : "Switch to light mode");
     }
 
     updateIcons();

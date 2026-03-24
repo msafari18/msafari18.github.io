@@ -19,17 +19,20 @@ import { siteConfig } from "../data/site";
       <!-- Nav links (hidden on small screens) -->
       <a
         href="/#bio"
-        class="hidden md:block rounded-md px-3 py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
+        data-section="bio"
+        class="nav-link hidden md:block rounded-md px-3 py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
         >Bio</a
       >
       <a
         href="/#publications"
-        class="hidden md:block rounded-md px-3 py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
+        data-section="publications"
+        class="nav-link hidden md:block rounded-md px-3 py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
         >Publications</a
       >
       <a
         href="/#preprints"
-        class="hidden md:block rounded-md px-3 py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
+        data-section="preprints"
+        class="nav-link hidden md:block rounded-md px-3 py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
         >Preprints</a
       >
 
@@ -120,3 +123,34 @@ import { siteConfig } from "../data/site";
     </nav>
   </div>
 </header>
+
+<script>
+  function initActiveNav() {
+    const navLinks = document.querySelectorAll(".nav-link") as NodeListOf<HTMLAnchorElement>;
+    const sectionIds = Array.from(navLinks).map((link) => link.dataset.section).filter(Boolean);
+    const sections = sectionIds.map((id) => document.getElementById(id!)).filter(Boolean) as HTMLElement[];
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const link = document.querySelector(`.nav-link[data-section="${entry.target.id}"]`);
+          if (!link) return;
+          if (entry.isIntersecting) {
+            navLinks.forEach((l) => {
+              l.classList.remove("text-[var(--color-text)]", "border-b-2", "border-[var(--color-accent)]");
+            });
+            link.classList.add("text-[var(--color-text)]", "border-b-2", "border-[var(--color-accent)]");
+          }
+        });
+      },
+      { rootMargin: "-50% 0px -50% 0px" },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  }
+
+  initActiveNav();
+  document.addEventListener("astro:after-swap", initActiveNav);
+</script>

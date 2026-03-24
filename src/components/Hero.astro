@@ -2,7 +2,7 @@
 import { siteConfig } from "../data/site";
 ---
 
-<section id="bio" class="scroll-mt-20">
+<section id="bio" class="scroll-mt-20 animate-on-scroll">
   <div class="flex flex-col-reverse items-center gap-8 md:flex-row md:items-start md:gap-12">
     <!-- Bio text -->
     <div class="flex-1 space-y-4">
@@ -36,14 +36,21 @@ import { siteConfig } from "../data/site";
         >.
       </p>
       <p class="text-base leading-relaxed text-[var(--color-text-secondary)]">
-        My research focuses on developing robust watermarking techniques for
-        AI-generated content to combat misinformation and enhance digital trust.
-        I explore adversarial vulnerabilities in current watermarking systems and
-        design robust approaches that withstand targeted scrubbing attempts. I
-        aim to establish watermarking as critical infrastructure for generative
-        AI, ensuring accountability and trustworthiness across various
-        applications.
+        My research addresses privacy and traceability in machine learning.
+        I design efficient privacy-preserving protocols that enable collaborative
+        analytics and secure inference without exposing sensitive data, using
+        secure multi-party computation and differential privacy. I also develop
+        robust watermarking for AI-generated content, exposing vulnerabilities in
+        existing schemes through adaptive attacks and building defenses that
+        withstand adversarial removal.
       </p>
+      <div class="flex flex-wrap gap-2">
+        {siteConfig.knowsAbout.map((interest) => (
+          <span class="rounded-full border border-[var(--color-accent)]/20 bg-[var(--color-accent)]/5 px-3 py-1 text-xs font-medium text-[var(--color-accent)]">
+            {interest}
+          </span>
+        ))}
+      </div>
       <a
         href="/resume.pdf"
         target="_blank"
@@ -72,7 +79,7 @@ import { siteConfig } from "../data/site";
     <!-- Avatar -->
     <div class="shrink-0">
       <div
-        class="h-40 w-40 overflow-hidden rounded-full ring-2 ring-[var(--color-accent)]/30 ring-offset-2 ring-offset-[var(--color-bg)] md:h-48 md:w-48"
+        class="avatar-glow h-40 w-40 overflow-hidden rounded-full ring-2 ring-[var(--color-accent)]/30 ring-offset-2 ring-offset-[var(--color-bg)] md:h-48 md:w-48"
         style="box-shadow: 0 0 25px color-mix(in srgb, var(--color-accent) 40%, transparent), 0 0 50px color-mix(in srgb, var(--color-accent) 20%, transparent);"
       >
         <img
