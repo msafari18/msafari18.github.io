@@ -1,7 +1,12 @@
 /* Apply theme variables to elements */
+html {
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--background-color) !important;
   color: var(--text-color) !important;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
