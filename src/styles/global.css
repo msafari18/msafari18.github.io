@@ -11,6 +11,8 @@
   --color-accent: #3b82f6;
   --color-accent-hover: #60a5fa;
   --color-highlight: #f59e0b;
+  --color-topic-privacy: #06b6d4;
+  --color-topic-watermark: #a855f7;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -33,6 +35,8 @@ html.light {
   --color-accent: #2563eb;
   --color-accent-hover: #1d4ed8;
   --color-highlight: #d97706;
+  --color-topic-privacy: #0891b2;
+  --color-topic-watermark: #9333ea;
 }
 
 body {

@@ -1,4 +1,6 @@
 ---
+import { siteConfig } from "../data/site";
+
 interface Author {
   name: string;
   highlight: boolean;
@@ -14,6 +16,7 @@ interface Props {
   publication: {
     authors: Author[];
     title: string;
+    topic?: string;
     venue?: string;
     year: number;
     abstract?: string;
@@ -26,13 +29,31 @@ const { publication } = Astro.props;
 const paperLink = publication.links?.find((l) => l.type === "paper");
 const codeLink = publication.links?.find((l) => l.type === "code");
 const otherLinks = publication.links?.filter((l) => l.type !== "paper" && l.type !== "code") || [];
+const topicColor = publication.topic
+  ? siteConfig.topics[publication.topic as keyof typeof siteConfig.topics]?.color
+  : undefined;
 ---
 
 <article
-  class="group rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition-colors duration-200 hover:border-[var(--color-accent)]/30"
+  class="group rounded-lg border bg-[var(--color-surface)] p-5 transition-colors duration-200"
+  style={topicColor
+    ? `border-color: color-mix(in srgb, ${topicColor} 25%, var(--color-border)); border-left: 3px solid ${topicColor};`
+    : `border-color: var(--color-border);`}
   itemscope
   itemtype="https://schema.org/ScholarlyArticle"
 >
+  <!-- Topic + Authors -->
+  {publication.topic && topicColor && (
+    <div class="mb-2">
+      <span
+        class="inline-block rounded-full px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider"
+        style={`color: ${topicColor}; background-color: color-mix(in srgb, ${topicColor} 12%, transparent);`}
+      >
+        {publication.topic}
+      </span>
+    </div>
+  )}
+
   <!-- Authors -->
   <div class="mb-1 text-sm text-[var(--color-text-secondary)]">
     {

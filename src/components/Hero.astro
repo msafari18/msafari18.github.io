@@ -45,9 +45,12 @@ import { siteConfig } from "../data/site";
         withstand adversarial removal.
       </p>
       <div class="flex flex-wrap gap-2">
-        {siteConfig.knowsAbout.map((interest) => (
-          <span class="rounded-full border border-[var(--color-accent)]/20 bg-[var(--color-accent)]/5 px-3 py-1 text-xs font-medium text-[var(--color-accent)]">
-            {interest}
+        {Object.entries(siteConfig.topics).map(([name, { color }]) => (
+          <span
+            class="rounded-full border px-3 py-1 text-xs font-medium"
+            style={`color: ${color}; border-color: color-mix(in srgb, ${color} 30%, transparent); background-color: color-mix(in srgb, ${color} 8%, transparent);`}
+          >
+            {name}
           </span>
         ))}
       </div>

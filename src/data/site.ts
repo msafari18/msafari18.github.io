@@ -33,8 +33,12 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/abdulrahman-diaa-555300126/",
     scholar: "https://scholar.google.com/citations?user=xFX1k1AAAAAJ",
   },
-  knowsAbout: [
-    "Privacy-Preserving Machine Learning",
-    "AI-content Watermarking",
-  ],
+  topics: {
+    "Privacy-Preserving Machine Learning": {
+      color: "var(--color-topic-privacy)",
+    },
+    "AI-content Watermarking": {
+      color: "var(--color-topic-watermark)",
+    },
+  },
 } as const;
