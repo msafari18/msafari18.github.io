@@ -43,7 +43,7 @@ const { title, id, publications } = Astro.props;
   </h2>
   <div class="flex flex-col gap-4">
     {publications.map((pub, i) => (
-      <div class="animate-on-scroll" style={`transition-delay: ${i * 0.1}s`}>
+      <div class="animate-on-scroll" style={`transition-delay: ${i * 0.05}s`}>
         <PublicationCard publication={pub} />
       </div>
     ))}

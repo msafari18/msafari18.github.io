@@ -97,8 +97,8 @@ button:focus-visible,
 @media (prefers-reduced-motion: no-preference) {
   .animate-on-scroll {
     opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    transform: translateY(8px);
+    transition: opacity 0.15s ease-out, transform 0.15s ease-out;
   }
 
   .animate-on-scroll.is-visible {
