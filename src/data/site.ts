@@ -1,5 +1,6 @@
 export const siteConfig = {
   title: "Abdulrahman Diaa",
+  shortTitle: "Diaa",
   description:
     "PhD student researching privacy-preserving machine learning and content watermarking at the University of Waterloo.",
   url: "https://abdulrahmandiaa.ca",
