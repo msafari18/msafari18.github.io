@@ -1,0 +1,48 @@
+---
+interface Award {
+  name: string;
+  amount: string;
+  institution: string;
+  years: string;
+}
+
+interface Props {
+  awards: Award[];
+}
+
+const { awards } = Astro.props;
+---
+
+<section id="awards" class="scroll-mt-20">
+  <h2
+    class="mb-6 text-2xl font-bold text-[var(--color-text)] flex items-center gap-3 animate-on-scroll"
+  >
+    <span class="h-px flex-1 max-w-8 bg-[var(--color-accent)]"></span>
+    Awards
+  </h2>
+  <div class="flex flex-col gap-3">
+    {awards.map((award, i) => (
+      <div
+        class="animate-on-scroll group flex items-baseline justify-between gap-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-4 transition-colors duration-200"
+        style={`transition-delay: ${i * 0.1}s`}
+      >
+        <div class="min-w-0">
+          <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <h3 class="text-base font-semibold text-[var(--color-text)]">
+              {award.name}
+            </h3>
+            <span class="inline-flex items-center rounded-full bg-[var(--color-accent)]/10 px-2.5 py-0.5 text-xs font-medium text-[var(--color-accent)]">
+              {award.amount}
+            </span>
+          </div>
+          <p class="mt-1 text-sm text-[var(--color-text-secondary)]">
+            {award.institution}
+          </p>
+        </div>
+        <span class="shrink-0 text-sm font-medium text-[var(--color-text-secondary)]">
+          {award.years}
+        </span>
+      </div>
+    ))}
+  </div>
+</section>
