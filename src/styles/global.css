@@ -2,17 +2,17 @@
 
 /* Custom theme using Tailwind v4 CSS-first config */
 @theme {
-  --color-bg: #0a0a0a;
-  --color-surface: #141414;
-  --color-surface-hover: #1a1a1a;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-text: #f0f0f0;
-  --color-text-secondary: #a0a0a0;
-  --color-accent: #3b82f6;
-  --color-accent-hover: #60a5fa;
+  --color-bg: #0b1215;
+  --color-surface: #131e22;
+  --color-surface-hover: #1a2a30;
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-text: #f1f5f9;
+  --color-text-secondary: #b8c5d4;
+  --color-accent: #22d3ee;
+  --color-accent-hover: #67e8f9;
   --color-highlight: #f59e0b;
-  --color-topic-privacy: #06b6d4;
-  --color-topic-watermark: #a855f7;
+  --color-topic-privacy: #2dd4bf;
+  --color-topic-watermark: #fb923c;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -26,17 +26,17 @@ html {
 
 /* Light mode overrides */
 html.light {
-  --color-bg: #fafafa;
+  --color-bg: #f8fafb;
   --color-surface: #ffffff;
-  --color-surface-hover: #f0f0f0;
-  --color-border: rgba(0, 0, 0, 0.08);
-  --color-text: #1a1a1a;
-  --color-text-secondary: #6b7280;
-  --color-accent: #2563eb;
-  --color-accent-hover: #1d4ed8;
+  --color-surface-hover: #eef2f5;
+  --color-border: rgba(0, 0, 0, 0.12);
+  --color-text: #0f172a;
+  --color-text-secondary: #2d3748;
+  --color-accent: #0891b2;
+  --color-accent-hover: #0e7490;
   --color-highlight: #d97706;
-  --color-topic-privacy: #0891b2;
-  --color-topic-watermark: #9333ea;
+  --color-topic-privacy: #0d9488;
+  --color-topic-watermark: #ea580c;
 }
 
 body {
