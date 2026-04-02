@@ -2,13 +2,13 @@ export const siteConfig = {
   title: "Abdulrahman Diaa",
   shortTitle: "Diaa",
   description:
-    "PhD student researching privacy-preserving machine learning and content watermarking at the University of Waterloo.",
+    "PhD candidate researching privacy-preserving machine learning and content watermarking at the University of Waterloo.",
   url: "https://abdulrahmandiaa.ca",
   email: "a2diaa@uwaterloo.ca",
   image: "/images/bio-photo.jpeg",
   author: {
     name: "Abdulrahman Diaa",
-    jobTitle: "PhD Student",
+    jobTitle: "PhD candidate",
     organization: {
       name: "University of Waterloo",
       url: "https://uwaterloo.ca",
