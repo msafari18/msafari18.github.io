@@ -31,7 +31,7 @@ export const siteConfig = {
   },
   social: {
     github: "https://github.com/D-Diaa",
-    linkedin: "https://www.linkedin.com/in/abdulrahman-diaa-555300126/",
+    linkedin: "https://www.linkedin.com/in/abdulrahmandiaa/",
     scholar: "https://scholar.google.com/citations?user=xFX1k1AAAAAJ",
   },
   topics: {
