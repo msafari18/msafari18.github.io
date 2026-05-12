@@ -16,7 +16,7 @@ interface Props {
   publication: {
     authors: Author[];
     title: string;
-    topic?: string;
+    topics?: string[];
     venue?: string;
     year: number;
     abstract?: string;
@@ -30,29 +30,33 @@ const { publication, index = 0 } = Astro.props;
 const paperLink = publication.links?.find((l) => l.type === "paper");
 const codeLink = publication.links?.find((l) => l.type === "code");
 const otherLinks = publication.links?.filter((l) => l.type !== "paper" && l.type !== "code") || [];
-const topicColor = publication.topic
-  ? siteConfig.topics[publication.topic as keyof typeof siteConfig.topics]?.color
-  : undefined;
+const topicColors = (publication.topics || []).map((t) => ({
+  name: t,
+  color: siteConfig.topics[t as keyof typeof siteConfig.topics]?.color,
+}));
+const firstTopicColor = topicColors[0]?.color;
 const abstractId = `abstract-${index}`;
 ---
 
 <article
   class="group rounded-lg border bg-[var(--color-surface)] p-4 transition-colors duration-200"
-  style={topicColor
-    ? `border-color: color-mix(in srgb, ${topicColor} 25%, var(--color-border)); border-left: 3px solid ${topicColor};`
+  style={firstTopicColor
+    ? `border-color: color-mix(in srgb, ${firstTopicColor} 25%, var(--color-border)); border-left: 3px solid ${firstTopicColor};`
     : `border-color: var(--color-border);`}
   itemscope
   itemtype="https://schema.org/ScholarlyArticle"
 >
-  <!-- Topic + Authors -->
-  {publication.topic && topicColor && (
-    <div class="mb-1">
-      <span
-        class="inline-block rounded-full px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider"
-        style={`color: ${topicColor}; background-color: color-mix(in srgb, ${topicColor} 12%, transparent);`}
-      >
-        {publication.topic}
-      </span>
+  <!-- Topics -->
+  {topicColors.length > 0 && (
+    <div class="mb-1 flex flex-wrap gap-1">
+      {topicColors.map(({ name, color }) => color && (
+        <span
+          class="inline-block rounded-full px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider"
+          style={`color: ${color}; background-color: color-mix(in srgb, ${color} 12%, transparent);`}
+        >
+          {name}
+        </span>
+      ))}
     </div>
   )}
 

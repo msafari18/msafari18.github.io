@@ -1,0 +1,71 @@
+posters:
+  - year: 2026
+    title: "Machine Learning Reveals an Extreme-Environment k-mer-based Watermark Imprinted Across Eukaryotic Genomes"
+    authors: "Safari, M., et al."
+    event: "Canadian Bioinformatics Hub Conference 2026"
+    type: "Selected Presentation"
+    topics:
+      - "ML in genomics"
+
+  - year: 2025
+    title: "Enhancing DNA Foundation Models to Address Masking Inefficiencies"
+    authors: "Safari, M., et al."
+    event: "AI4NA Workshop & MLGenX Workshop – ICLR 2025"
+    type: "Poster"
+    topics:
+      - "DNA Foundation Models"
+      - "Representation Learning"
+
+  - year: 2025
+    title: "Adversarial Learning for Scalable High-Resolution Cancer Lineage Tracing from Single-Cell Methylation Data"
+    authors: "Safari, M., et al."
+    event: "Vector Remarkable Research Symposium 2025"
+    type: "Poster"
+    topics:
+      - "ML in Oncology"
+
+  - year: 2025
+    title: "Evidence for a Striking Convergence of Extreme Environment-Associated Genomic Signatures"
+    authors: "Butler, J. W., Safari, M., et al."
+    event: "EMGS Conference 2025"
+    type: "Poster"
+    topics:
+      - "ML in genomics"
+
+  - year: 2024
+    title: "From Extreme Life to Genomic Insights: Optimized parameters for extremophile genomic signature classification"
+    authors: "Safari, M., et al."
+    event: "EMGS Conference 2024"
+    type: "Poster"
+    topics:
+      - "ML in genomics"
+
+  - year: 2024
+    title: "Optimized machine learning methods permit the discovery of an environmental component of genomic signatures"
+    authors: "Butler, J. W., Safari, M., et al."
+    event: "EMGS Conference 2024"
+    type: "Poster"
+    topics:
+      - "ML in genomics"
+
+  - year: 2023
+    title: "BarcodeBERT: Transformers for Biodiversity Analysis"
+    authors: "Millán Arias, P., Sadjadi, N., Safari, M., et al."
+    event: "Workshop on Self-Supervised Learning – NeurIPS 2023"
+    type: "Poster"
+    topics:
+      - "DNA Foundation Models"
+      - "Representation Learning"
+
+talks:
+  - year: 2026
+    month: "Feb"
+    title: "The Rising Star Seminar Series"
+    role: "Invited Speaker"
+    description: "Presented PhD research on DNA foundation models and computational genomics to undergraduate students, discussing research pathways and career opportunities in computational biology."
+
+  - year: 2026
+    month: "Jan"
+    title: "The Western Biology & Evolution Seminar Series (WBESS)"
+    role: "Invited Podcast Guest"
+    description: "Discussion of the paper: Life at the extremes: maximally divergent microbes with similar genomic signatures linked to extreme environments."

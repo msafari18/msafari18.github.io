@@ -1,24 +1,24 @@
-- name: Interop Labs PhD Fellowship
-  amount: CA$110K
+- name: WiCS Graduate Student Scholarship
+  amount: CA$3K
   institution: University of Waterloo
-  years: "2026-2027"
+  years: "2026"
 
 - name: David R. Cheriton Graduate Scholarship
-  amount: CA$40K
+  amount: CA$20K
   institution: University of Waterloo
-  years: "2021-2025"
+  years: "2026"
 
-- name: International Masters Award of Excellence
-  amount: CA$12.5K
+- name: AMII Travel Bursary for AI Conference
+  amount: CA$1.5K
   institution: University of Waterloo
-  years: "2021-2023"
+  years: "2025"
 
-- name: Johnston International Entrance Scholarship
+- name: Cotton Family Women in Mathematics Scholarship
+  amount: CA$3.5K
+  institution: University of Waterloo
+  years: "2024"
+
+- name: Doctoral Entrance Award for Women in Math
   amount: CA$5K
   institution: University of Waterloo
-  years: "2021-2022"
-
-- name: Tarek Nour AUC Scholarship
-  amount: US$100K
-  institution: Tarek Nour Communications
-  years: "2016-2021"
+  years: "2022"

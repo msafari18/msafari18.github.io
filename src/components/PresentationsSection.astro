@@ -1,0 +1,100 @@
+---
+import { siteConfig } from "../data/site";
+
+interface Poster {
+  year: number;
+  title: string;
+  authors: string;
+  event: string;
+  type: string;
+  topics?: string[];
+}
+
+interface Talk {
+  year: number;
+  month: string;
+  title: string;
+  role: string;
+  description: string;
+}
+
+interface Props {
+  posters: Poster[];
+  talks: Talk[];
+}
+
+const { posters, talks } = Astro.props;
+---
+
+<section id="presentations" class="scroll-mt-20">
+  <h2 class="mb-6 text-2xl font-bold text-[var(--color-text)] flex items-center gap-3">
+    <span class="h-px w-4 bg-[var(--color-accent)]"></span>
+    Presentations
+  </h2>
+
+  <!-- Talks & Invited Talks -->
+  {talks.length > 0 && (
+    <div class="mb-6">
+      <h3 class="mb-3 text-sm font-semibold uppercase tracking-widest text-[var(--color-text-secondary)]">
+        Talks &amp; Media
+      </h3>
+      <div class="flex flex-col gap-3">
+        {talks.map((t) => (
+          <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-4">
+            <div class="flex items-start justify-between gap-4">
+              <div class="min-w-0">
+                <h4 class="text-base font-semibold text-[var(--color-text)]">{t.title}</h4>
+                <p class="mt-0.5 text-sm font-medium text-[var(--color-accent)]">{t.role}</p>
+                <p class="mt-1 text-sm leading-relaxed text-[var(--color-text-secondary)]">{t.description}</p>
+              </div>
+              <span class="shrink-0 text-sm font-medium text-[var(--color-text-secondary)]">
+                {t.month} {t.year}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  <!-- Posters & Conference Presentations -->
+  {posters.length > 0 && (
+    <div>
+      <h3 class="mb-3 text-sm font-semibold uppercase tracking-widest text-[var(--color-text-secondary)]">
+        Posters &amp; Conference Presentations
+      </h3>
+      <div class="flex flex-col gap-3">
+        {posters.map((p) => (
+          <div class="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-4">
+            <div class="flex items-start justify-between gap-4">
+              <div class="min-w-0">
+                <div class="mb-1 flex flex-wrap gap-1">
+                  <span class="inline-block rounded-full bg-[var(--color-accent)]/10 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider text-[var(--color-accent)]">
+                    {p.type}
+                  </span>
+                  {(p.topics || []).map((topic) => {
+                    const color = siteConfig.topics[topic as keyof typeof siteConfig.topics]?.color;
+                    return color ? (
+                      <span
+                        class="inline-block rounded-full px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider"
+                        style={`color: ${color}; background-color: color-mix(in srgb, ${color} 12%, transparent);`}
+                      >
+                        {topic}
+                      </span>
+                    ) : null;
+                  })}
+                </div>
+                <h4 class="text-base font-semibold text-[var(--color-text)]">{p.title}</h4>
+                <p class="mt-0.5 text-sm text-[var(--color-text-secondary)]">{p.authors}</p>
+                <p class="mt-0.5 text-sm font-medium text-[var(--color-accent)]/80">{p.event}</p>
+              </div>
+              <span class="shrink-0 text-sm font-medium text-[var(--color-text-secondary)]">
+                {p.year}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+</section>

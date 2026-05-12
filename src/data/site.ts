@@ -1,45 +1,48 @@
 export const siteConfig = {
-  title: "Abdulrahman Diaa",
-  shortTitle: "Diaa",
+  title: "Monireh Safari",
+  shortTitle: "Monireh",
   description:
-    "PhD candidate researching privacy-preserving machine learning and content watermarking at the University of Waterloo.",
-  url: "https://abdulrahmandiaa.ca",
-  email: "a2diaa@uwaterloo.ca",
+    "PhD candidate in Computer Science at the University of Waterloo, researching DNA foundation models, representation learning, and computational genomics.",
+  url: "https://msafari18.github.io",
+  email: "m4safari@uwaterloo.ca",
   image: "/images/bio-photo.jpeg",
   author: {
-    name: "Abdulrahman Diaa",
-    jobTitle: "PhD candidate",
+    name: "Monireh Safari",
+    jobTitle: "PhD Candidate",
     organization: {
       name: "University of Waterloo",
       url: "https://uwaterloo.ca",
     },
     lab: {
-      name: "Cryptography, Security, and Privacy (CrySP)",
-      url: "https://crysp.uwaterloo.ca",
+      name: "Kari Genomics Lab",
+      url: "https://cs.uwaterloo.ca/~lila/",
     },
     supervisor: {
-      name: "Florian Kerschbaum",
-      url: "https://cs.uwaterloo.ca/~fkerschb/",
+      name: "Lila Kari",
+      url: "https://cs.uwaterloo.ca/~lila/",
     },
     alumniOf: [
-      { name: "University of Waterloo", url: "https://uwaterloo.ca" },
-      {
-        name: "The American University in Cairo",
-        url: "https://www.aucegypt.edu",
-      },
+      { name: "Sharif University of Technology", url: "https://www.sharif.edu" },
+      { name: "Amirkabir University of Technology", url: "https://www.aut.ac.ir" },
     ],
   },
   social: {
-    github: "https://github.com/D-Diaa",
-    linkedin: "https://www.linkedin.com/in/abdulrahmandiaa/",
-    scholar: "https://scholar.google.com/citations?user=xFX1k1AAAAAJ",
+    github: "msafari18",
+    linkedin: "monireh-safari",
+    scholar: "https://scholar.google.com/citations?user=KIlvvosAAAAJ&hl=en",
   },
   topics: {
-    "Privacy-Preserving Machine Learning": {
+    "DNA Foundation Models": {
       color: "var(--color-topic-privacy)",
     },
-    "AI-content Watermarking": {
+    "Representation Learning": {
       color: "var(--color-topic-watermark)",
+    },
+    "ML in genomics": {
+      color: "var(--color-topic-genomics)",
+    },
+    "ML in Oncology": {
+      color: "var(--color-topic-oncology)",
     },
   },
 } as const;

@@ -16,7 +16,7 @@ interface Link {
 interface Publication {
   authors: Author[];
   title: string;
-  topic?: string;
+  topics?: string[];
   venue?: string;
   year: number;
   abstract?: string;
@@ -32,7 +32,7 @@ interface Props {
 
 const { title, id, publications } = Astro.props;
 
-const topics = [...new Set(publications.map((p) => p.topic).filter(Boolean))] as string[];
+const topics = [...new Set(publications.flatMap((p) => p.topics || []))] as string[];
 const hasTopics = topics.length > 1;
 ---
 
@@ -78,8 +78,8 @@ const hasTopics = topics.length > 1;
   <div class="publication-list flex flex-col gap-3">
     {publications.map((pub, i) => (
       <div
-        class="publication-item "
-        data-topic={pub.topic || ""}
+        class="publication-item"
+        data-topics={JSON.stringify(pub.topics || [])}
       >
         <PublicationCard publication={pub} index={i} />
       </div>
@@ -135,7 +135,8 @@ const hasTopics = topics.length > 1;
 
           // Filter items
           items.forEach((item) => {
-            const match = topic === "all" || item.dataset.topic === topic;
+            const pubTopics: string[] = JSON.parse(item.dataset.topics || "[]");
+            const match = topic === "all" || pubTopics.includes(topic!);
             item.style.display = match ? "" : "none";
           });
         });

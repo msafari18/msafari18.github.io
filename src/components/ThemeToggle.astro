@@ -6,17 +6,7 @@
   class="relative w-9 h-9 flex items-center justify-center rounded-full transition-colors duration-200 hover:bg-[var(--color-surface-hover)] cursor-pointer"
   aria-label="Toggle dark/light mode"
 >
-  <!-- Sun icon (shown in dark mode) -->
-  <svg
-    class="sun-icon w-5 h-5 text-[var(--color-text)] transition-opacity duration-200"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  >
+  <svg class="sun-icon w-5 h-5 text-[var(--color-text)] transition-opacity duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="12" cy="12" r="5"></circle>
     <line x1="12" y1="1" x2="12" y2="3"></line>
     <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -27,40 +17,47 @@
     <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
     <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
   </svg>
-  <!-- Moon icon (shown in light mode) -->
-  <svg
-    class="moon-icon w-5 h-5 text-[var(--color-text)] absolute transition-opacity duration-200"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  >
+  <svg class="moon-icon w-5 h-5 text-[var(--color-text)] absolute transition-opacity duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
   </svg>
 </button>
 
 <script>
+  function applyTheme(theme: string) {
+    const html = document.documentElement;
+    if (theme === "dark") {
+      html.classList.add("dark");
+      html.classList.remove("light");
+    } else {
+      html.classList.add("light");
+      html.classList.remove("dark");
+    }
+  }
+
   function initThemeToggle() {
     const toggle = document.getElementById("theme-toggle");
     if (!toggle) return;
 
+    // Default to light unless user previously chose dark
+    const saved = localStorage.getItem("theme") || "light";
+    applyTheme(saved);
+
     function updateIcons() {
-      const isLight = document.documentElement.classList.contains("light");
+      const isDark = document.documentElement.classList.contains("dark");
       const sun = toggle!.querySelector(".sun-icon") as HTMLElement;
       const moon = toggle!.querySelector(".moon-icon") as HTMLElement;
-      if (sun) sun.style.opacity = isLight ? "0" : "1";
-      if (moon) moon.style.opacity = isLight ? "1" : "0";
-      toggle!.setAttribute("aria-label", isLight ? "Switch to dark mode" : "Switch to light mode");
+      if (sun) sun.style.opacity = isDark ? "1" : "0";
+      if (moon) moon.style.opacity = isDark ? "0" : "1";
+      toggle!.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
     }
 
     updateIcons();
 
     toggle.addEventListener("click", () => {
-      const isLight = document.documentElement.classList.toggle("light");
-      localStorage.setItem("theme", isLight ? "light" : "dark");
+      const isDark = document.documentElement.classList.contains("dark");
+      const newTheme = isDark ? "light" : "dark";
+      localStorage.setItem("theme", newTheme);
+      applyTheme(newTheme);
       updateIcons();
     });
   }
