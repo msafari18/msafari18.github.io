@@ -18,7 +18,6 @@ Edit `src/data/publications.yml` (or `preprints.yml`):
 ```yaml
 - authors:
     - name: "A. Author"
-      highlight: false
     - name: "Your Name"
       highlight: true
   title: "Paper Title"
