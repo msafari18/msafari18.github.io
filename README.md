@@ -2,6 +2,7 @@
 
 Academic portfolio site built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/) v4.
 
+
 ## Development
 
 ```bash
