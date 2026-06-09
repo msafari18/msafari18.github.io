@@ -1,4 +1,4 @@
-# abdulrahmandiaa.ca
+# msafari18.github.io
 
 Academic portfolio site built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/) v4.
 
