@@ -1,3 +1,8 @@
+- name: Exceptional Flash Talk Award
+  amount: null
+  institution: Canadian Bioinformatics Hub Conference
+  years: "2026"
+  
 - name: WiCS Graduate Student Scholarship
   amount: CA$3K
   institution: University of Waterloo
